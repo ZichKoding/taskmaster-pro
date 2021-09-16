@@ -133,7 +133,7 @@ $("#task-form-modal .btn-primary").click(function() {
   var taskDate = $("#modalDueDate").val();
 
   if (taskText && taskDate) {
-    createTask(taskText, taskDate, "toDo");
+    createTask(taskText, taskDate, "toDo"); // IS toDo SUPPOSED TO BE IN QUOTES????
 
     // close modal
     $("#task-form-modal").modal("hide");
@@ -146,6 +146,10 @@ $("#task-form-modal .btn-primary").click(function() {
 
     saveTasks();
   }
+});
+
+$("#modalDueDate").datepicker({
+  minDate: 1
 });
 
 $(".list-group").on("click", "p", function() {
@@ -204,6 +208,15 @@ $(".list-group").on("click", "span", function() {
 
   // swap out elements 
   $(this).replaceWith(dateInput);
+
+  // enable jquery ui datepicker
+  dateInput.datepicker({
+    minDate: 1,
+    onClose: function() {
+      // when calendar is closed, force a "change" event on the `dateInput`
+      $(this).trigger("change");
+    }
+  });
 
   // automatically focus on new element
   dateInput.trigger("focus");
