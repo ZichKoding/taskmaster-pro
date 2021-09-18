@@ -74,19 +74,16 @@ $(".card .list-group").sortable({
   helper: "clone",
   activate: function(event) {
     $(this).addClass(".dropover");
-    console.log("activate", this);
+    console.log("what in the.....???");
   },
   deactivate: function(event) {
     $(this).removeClass(".dropover");
-    console.log("deactivate", this);
   },
   over: function(event) {
-    event.target.addClass(".dropover-active");
-    console.log("over", event.target);
+    $(event.target).addClass(".dropover-active");
   },
   out: function(event) {
-    event.target.removeClass(".dropover-active");
-    console.log("out", event.target);
+    $(event.target).removeClass(".dropover-active");
   },
   update: function(event) {
     var tempArr = [];
